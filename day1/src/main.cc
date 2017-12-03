@@ -8,11 +8,11 @@
 
 using namespace std;
 
-
 int inverse_captcha(string input){
     int sum=0;
-    int next;
-    for (string::size_type i = 0; i < input.size(); ++i){
+    string::size_type next;
+    string::size_type size = input.size();
+    for (string::size_type i = 0; i < size; ++i){
         if (i < input.size()-1)
             next = i+1;
         else
