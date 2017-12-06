@@ -9,6 +9,46 @@
 
 using namespace std;
 
+int checksum1(int input[16][16]){
+	int min, max, value, checksum = 0;
+
+	for (int i = 0; i < 16; i++) {
+    	min = 100000;
+    	max = 0;
+
+    	for (int j = 0; j < 16; j++){
+    		value = input[i][j];
+
+    		if (value < min) min = value;
+    		if (value > max) max = value;
+    	}
+
+    	checksum += (max-min);
+    }
+
+	return checksum;
+}
+
+int checksum2(int input[16][16]){
+	int a, b,checksum = 0;
+
+	for (int i = 0; i < 16; i++) {
+
+    	for (int j = 0; j < 16; j++){
+    		a = input[i][j];
+    		
+    		for (int z = 0; z < 16; z++){
+    			b = input[i][z];
+    			if (z != j && a % b == 0) {
+    				checksum += (a/b);
+    				break;
+    			}
+    		}
+    	}
+    }
+
+	return checksum;
+}
 
 int main() {
 
@@ -19,24 +59,16 @@ int main() {
 	    throw std::runtime_error("Cannot open input.txt");
 	}
 
-	int min, max, value, checksum = 0;
-
-    for (int i = 0; i < 16; i++) {
-    	min = 100000;
-    	max = 0;
+	int input[16][16];
+	for (int i = 0; i < 16; i++) {
 
     	for (int j = 0; j < 16; j++){
-    		file >> value;
-
-    		if (value < min) min = value;
-    		if (value > max) max = value;
+    		file >> input[i][j];
     	}
-    	
-    	checksum += (max-min);
     }
 
-    cout << "Checksum: " << checksum << endl;
-
+    cout << "Checksum 1: " << checksum1(input) << endl;
+	cout << "Checksum 2: " << checksum2(input) << endl;
     return 0;
 }
 
