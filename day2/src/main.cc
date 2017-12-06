@@ -9,7 +9,8 @@
 
 using namespace std;
 
-int checksum1(int input[16][16]){
+int checksum1(int input[16][16])
+{
 	int min, max, value, checksum = 0;
 
 	for (int i = 0; i < 16; i++) {
@@ -29,11 +30,11 @@ int checksum1(int input[16][16]){
 	return checksum;
 }
 
-int checksum2(int input[16][16]){
+int checksum2(int input[16][16])
+{
 	int a, b,checksum = 0;
 
 	for (int i = 0; i < 16; i++) {
-
 		for (int j = 0; j < 16; j++){
 			a = input[i][j];
 			
