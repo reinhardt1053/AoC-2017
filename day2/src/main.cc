@@ -20,15 +20,18 @@ int main() {
 	}
 
 	int min, max, value, checksum = 0;
+
     for (int i = 0; i < 16; i++) {
     	min = 100000;
     	max = 0;
+
     	for (int j = 0; j < 16; j++){
     		file >> value;
 
     		if (value < min) min = value;
     		if (value > max) max = value;
     	}
+    	
     	checksum += (max-min);
     }
 
